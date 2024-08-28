@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "DBA3010A-B5B2-4094-B739-1C59D613C0FE"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C9A3AD04-194C-4CDD-A34F-CFED2383C1C0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FetchRecipe/ViewControllers/FRMainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA48DE8B-F334-4DEA-B072-8EC1D3C7E3A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FetchRecipe/Views/FRMealTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "configureCell()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FA48DE8B-F334-4DEA-B072-8EC1D3C7E3A9 - 8f9a7cb3081c03ae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 () async -&gt; () in FetchRecipe.FRMealTableViewCell.configureCell() -&gt; ()"
+                  moduleName = "FetchRecipe.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishanpatel/repos/FetchRecipe/FetchRecipe/Views/FRMealTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38">
+               </Location>
+               <Location
+                  uuid = "FA48DE8B-F334-4DEA-B072-8EC1D3C7E3A9 - fe2d5bc233197cc0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 () async -&gt; () in FetchRecipe.FRMealTableViewCell.configureCell() -&gt; ()"
+                  moduleName = "FetchRecipe.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishanpatel/repos/FetchRecipe/FetchRecipe/Views/FRMealTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38">
+               </Location>
+               <Location
+                  uuid = "FA48DE8B-F334-4DEA-B072-8EC1D3C7E3A9 - 592be7acaa36cfa0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 () async -&gt; () in FetchRecipe.FRMealTableViewCell.configureCell() -&gt; ()"
+                  moduleName = "FetchRecipe.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishanpatel/repos/FetchRecipe/FetchRecipe/Views/FRMealTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38">
+               </Location>
+               <Location
+                  uuid = "FA48DE8B-F334-4DEA-B072-8EC1D3C7E3A9 - be0cd356155a2da1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #1 () async -&gt; () in FetchRecipe.FRMealTableViewCell.configureCell() -&gt; ()"
+                  moduleName = "FetchRecipe.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ishanpatel/repos/FetchRecipe/FetchRecipe/Views/FRMealTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
