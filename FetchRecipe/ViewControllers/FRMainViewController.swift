@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 class FRMainViewController: UIViewController
 {
@@ -65,8 +66,30 @@ extension FRMainViewController: UITableViewDataSource, UITableViewDelegate
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
         return 100.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let selectedMeal = desserts[indexPath.row]
+        Task
+        {
+            do
+            {
+                guard let mealDetails = try await FRRecipeService.shared.fetchMealDetails(with: selectedMeal.idMeal) else { return }
+                let detailView = FRMealDetailsView(meal: mealDetails)
+                let hostingController = UIHostingController(rootView: detailView)
+                hostingController.modalPresentationStyle = .fullScreen
+                self.present(hostingController, animated: true)
+                
+            }
+            catch let error
+            {
+                print("Error: \(error)")
+            }
+        }
     }
     
 }

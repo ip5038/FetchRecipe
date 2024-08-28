@@ -5,25 +5,8 @@ class FRRecipeService
 {
     static let shared = FRRecipeService()
     private let kListMealsURL = "https://themealdb.com/api/json/v1/1/filter.php?c=Dessert"
-    // append the meal id to string before calling API
+    // Append the meal id to string before calling API
     private let kGetMealDetailsURL = "https://themealdb.com/api/json/v1/1/lookup.php?i="
-    private let frMealJsonData = """
-{
-    "meals":[
-        {
-            "strMeal":"Apam balik",
-            "strMealThumb":"https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
-            "idMeal":"53049"
-        },
-        {
-            "strMeal":"Apple & Blackberry Crumble",
-            "strMealThumb":"https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg",
-            "idMeal":"52893"
-        }
-        // More meal objects...
-    ]
-}
-""".data(using: .utf8)!
     
     func fetchDesserts() async throws -> [FRMeal]
     {
@@ -31,20 +14,28 @@ class FRRecipeService
         
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let httpRes = response as? HTTPURLResponse, httpRes.statusCode == 200 else { throw URLError(.badServerResponse) }
-        
-        let dessertsResponse = try JSONDecoder().decode(FRMeals.self, from: data)
+        let dessertsResponse = try JSONDecoder().decode(FRMealsResponse.self, from: data)
         
         return dessertsResponse.meals
     }
     
-    func fetchMealDetails(with mealID: String) async -> FRMeal?
+    func fetchMealDetails(with mealID: String) async throws -> FRMealDetails?
     {
-        return nil
+        let urlString = kGetMealDetailsURL + mealID
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL.")
+            return nil
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let mealResponse = try JSONDecoder().decode(FRMealDetailsResponse.self, from: data)
+        
+        return mealResponse.meals.first
     }
     
     func downloadImage(_ url: URL) async throws -> Data
     {
-       let request = URLRequest(url: url)
+        let request = URLRequest(url: url)
         let (data, _) = try await URLSession.shared.data(for: request)
         return data
     }

@@ -7,7 +7,7 @@ struct FRMeal: Codable
     let idMeal: String
 }
 
-struct FRMeals: Codable
+struct FRMealsResponse: Codable
 {
     let meals: [FRMeal]
 }
