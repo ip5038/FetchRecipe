@@ -23,7 +23,7 @@ class FRRecipeService
     {
         let urlString = kGetMealDetailsURL + mealID
         guard let url = URL(string: urlString) else {
-            print("Invalid URL.")
+            print("Invalid meals detail URL")
             return nil
         }
         

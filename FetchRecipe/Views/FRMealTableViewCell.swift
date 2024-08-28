@@ -12,7 +12,7 @@ class FRMealTableViewCell: UITableViewCell {
     @IBOutlet weak var mealImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     var meal: FRMeal!
-    var mainViewController: FRMainViewController!
+    var mealsViewModel: FRMealsViewModel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +27,7 @@ class FRMealTableViewCell: UITableViewCell {
     
     func configureCell()
     {
-        let cachedImage = self.mainViewController.getImage(mealId: meal.idMeal)
+        let cachedImage = self.mealsViewModel.getImage(mealId: meal.idMeal)
         if (cachedImage == nil)
         {
             Task
@@ -39,7 +39,7 @@ class FRMealTableViewCell: UITableViewCell {
                     if let img = UIImage(data: data)
                     {
                         self.mealImageView.image = img
-                        self.mainViewController.saveImage(mealId: meal.idMeal, image: img)
+                        self.mealsViewModel.saveImage(mealId: meal.idMeal, image: img)
                     }
                 }
                 catch
