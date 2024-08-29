@@ -4,13 +4,9 @@ struct FRMealDetails: Codable
 {
     let idMeal: String
     let strMeal: String
-    let strDrinkAlternate: String?
-    let strCategory: String
-    let strArea: String
     let strInstructions: String
     let strMealThumb: String
-    let strTags: String?
-    let strYoutube: String?
+
     let strIngredient1: String?
     let strIngredient2: String?
     let strIngredient3: String?
@@ -31,6 +27,7 @@ struct FRMealDetails: Codable
     let strIngredient18: String?
     let strIngredient19: String?
     let strIngredient20: String?
+    
     let strMeasure1: String?
     let strMeasure2: String?
     let strMeasure3: String?
@@ -51,10 +48,6 @@ struct FRMealDetails: Codable
     let strMeasure18: String?
     let strMeasure19: String?
     let strMeasure20: String?
-    let strSource: String?
-    let strImageSource: String?
-    let strCreativeCommonsConfirmed: String?
-    let dateModified: String?
 }
 
 struct FRMealDetailsResponse: Codable

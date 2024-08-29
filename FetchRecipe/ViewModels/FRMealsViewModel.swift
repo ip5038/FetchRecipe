@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 class FRMealsViewModel: NSObject
 {
     private var mealImagesCache: [String: UIImage] = [:]
@@ -51,7 +52,7 @@ class FRMealsViewModel: NSObject
                 let data = try await self.downloadImage(imgUrl)
                 if let img = UIImage(data: data)
                 {
-                    //  self.saveImage(mealId: mealId, image: img) TODO: cache this image. Crashing due to concurrency issues
+                    self.saveImage(mealId: mealId, image: img)
                     return img
                 }
                 else
@@ -61,12 +62,12 @@ class FRMealsViewModel: NSObject
             }
             catch
             {
-                print("Error downloading recipe image: \(error.localizedDescription)")
                 throw error
             }
         }
         else
         {
+            print("Return cached image")
             return mealImagesCache[mealId]
         }
     }

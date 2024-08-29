@@ -65,7 +65,6 @@ extension FRMealsViewController: UITableViewDataSource, UITableViewDelegate
                 let hostingController = UIHostingController(rootView: detailView)
                 hostingController.modalPresentationStyle = .fullScreen
                 self.present(hostingController, animated: true)
-                
             }
             catch let error
             {
