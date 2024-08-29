@@ -56,8 +56,9 @@ struct FRMealDetailsResponse: Codable
 }
 
 
-extension FRMealDetails {
-    static func getIngredientKeyPath(_ index: Int) -> KeyPath<FRMealDetails, String?>
+extension FRMealDetails
+{
+    static func getIngredientKeyPath(index: Int) -> KeyPath<FRMealDetails, String?>
     {
         switch index
         {
@@ -106,7 +107,7 @@ extension FRMealDetails {
         }
     }
     
-    static func getMeasureKeyPath(_ index: Int) -> KeyPath<FRMealDetails, String?>
+    static func getMeasureKeyPath(index: Int) -> KeyPath<FRMealDetails, String?>
     {
         switch index
         {

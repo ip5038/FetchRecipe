@@ -8,6 +8,7 @@ class FRRecipeService
     // Append the meal id to string before calling API
     private let kGetMealDetailsURL = "https://themealdb.com/api/json/v1/1/lookup.php?i="
     
+    /// Retuns a list desserts from the mealdb.
     func fetchDesserts() async throws -> [FRMeal]
     {
         guard let url = URL(string: kListMealsURL) else { return [] }
@@ -19,13 +20,11 @@ class FRRecipeService
         return dessertsResponse.meals
     }
     
+    /// Returns details given the meal id.
     func fetchMealDetails(with mealID: String) async throws -> FRMealDetails?
     {
         let urlString = kGetMealDetailsURL + mealID
-        guard let url = URL(string: urlString) else {
-            print("Invalid meals detail URL")
-            return nil
-        }
+        guard let url = URL(string: urlString) else { return nil }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let mealResponse = try JSONDecoder().decode(FRMealDetailsResponse.self, from: data)

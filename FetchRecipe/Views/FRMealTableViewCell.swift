@@ -7,23 +7,24 @@
 
 import UIKit
 
-class FRMealTableViewCell: UITableViewCell {
-
+class FRMealTableViewCell: UITableViewCell
+{
     @IBOutlet weak var mealImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     var meal: FRMeal!
     var mealsViewModel: FRMealsViewModel!
     
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
         // Initialization code
-       
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    /// Sets the cell image and title
     func configureCell()
     {
         Task
@@ -35,15 +36,15 @@ class FRMealTableViewCell: UITableViewCell {
             }
             catch
             {
-                print("Error fetching image: \(error)")
+                print("Error fetching image in configureCell(): \(error)")
             }
         }
         
         titleLabel.text = meal.strMeal
     }
     
-    override func prepareForReuse() {
+    override func prepareForReuse()
+    {
         self.mealImageView.image = nil
     }
-    
 }

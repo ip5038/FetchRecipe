@@ -21,10 +21,10 @@ class FRMealsViewController: UIViewController
         Task
         {
             await mealsViewModel.fetchDesserts()
-            DispatchQueue.main.async {
+            DispatchQueue.main.async
+            {
                 self.mealsTableView.reloadData()
             }
-           
         }
     }
 
@@ -59,7 +59,8 @@ extension FRMealsViewController: UITableViewDataSource, UITableViewDelegate
         {
             do
             {
-                guard let mealDetails = try await mealsViewModel.getMealDetails(indexPath: indexPath) else { return }
+                let selectedMeal = self.mealsViewModel.meals[indexPath.row]
+                guard let mealDetails = try await mealsViewModel.getMealDetails(mealId: selectedMeal.idMeal) else { return }
                 let mealImage = try await self.mealsViewModel.getImage(imageUrl: mealDetails.strMealThumb, mealId: mealDetails.idMeal)
                 let detailView = FRMealDetailsView(mealDetails: mealDetails, mealImage: mealImage)
                 let hostingController = UIHostingController(rootView: detailView)
@@ -68,7 +69,7 @@ extension FRMealsViewController: UITableViewDataSource, UITableViewDelegate
             }
             catch let error
             {
-                print("Error: \(error)")
+                print("Error opening details view: \(error)")
             }
         }
     }

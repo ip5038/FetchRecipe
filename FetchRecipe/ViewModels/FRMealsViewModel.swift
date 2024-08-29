@@ -19,6 +19,7 @@ class FRMealsViewModel: NSObject
         super.init()
     }
 
+    /// Get all the desserts from meals db then sort and filter out meal with missing info.
     func fetchDesserts() async
     {
         do
@@ -33,6 +34,7 @@ class FRMealsViewModel: NSObject
         }
     }
     
+    /// Sorts the meals alphabatically by name and removes any meal with missing info.
     private func sortAndFilterMeals()
     {
         // Remove any meals with missing info
@@ -42,6 +44,7 @@ class FRMealsViewModel: NSObject
         self.meals.sort(by: { $0.strMeal < $1.strMeal })
     }
     
+    /// Returns UIImage given the image url and caches the image for later use. If the image already exsits in the cache, then return that to prevent redownloading.
     func getImage(imageUrl: String, mealId: String) async throws -> UIImage?
     {
         if (mealImagesCache[mealId] == nil)
@@ -49,7 +52,7 @@ class FRMealsViewModel: NSObject
             do
             {
                 let imgUrl = URL(string: imageUrl)!
-                let data = try await self.downloadImage(imgUrl)
+                let data = try await self.downloadImage(url: imgUrl)
                 if let img = UIImage(data: data)
                 {
                     self.saveImage(mealId: mealId, image: img)
@@ -62,12 +65,12 @@ class FRMealsViewModel: NSObject
             }
             catch
             {
+                print("Error downloading image: \(error)")
                 throw error
             }
         }
         else
         {
-            print("Return cached image")
             return mealImagesCache[mealId]
         }
     }
@@ -77,23 +80,23 @@ class FRMealsViewModel: NSObject
         mealImagesCache[mealId] = image
     }
     
-    func getMealDetails(indexPath: IndexPath) async throws -> FRMealDetails?
+    /// Returns details about a meal given the id.
+    func getMealDetails(mealId: String) async throws -> FRMealDetails?
     {
         do
         {
-            let selectedMeal = meals[indexPath.row]
-            guard let mealDetails = try await FRRecipeService.shared.fetchMealDetails(with: selectedMeal.idMeal) else { return nil}
-            
+            guard let mealDetails = try await FRRecipeService.shared.fetchMealDetails(with: mealId) else { return nil }
             return mealDetails
         }
         catch let error
         {
-            print("Error: \(error)")
+            print("Error getting meal details: \(error)")
             return nil
         }
     }
     
-    func downloadImage(_ url: URL) async throws -> Data
+    /// Retuns image data given the image url to download.
+    func downloadImage(url: URL) async throws -> Data
     {
         let request = URLRequest(url: url)
         let (data, _) = try await URLSession.shared.data(for: request)

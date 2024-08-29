@@ -43,8 +43,8 @@ struct FRMealDetailsView: View
                         
                         // Try to dynamically get ingrident and measurement. If both are not nil, then show the text
                         ForEach(1...20, id: \.self) { index in
-                            let ingredientKeyPath = FRMealDetails.getIngredientKeyPath(index)
-                            let measureKeyPath = FRMealDetails.getMeasureKeyPath(index)
+                            let ingredientKeyPath = FRMealDetails.getIngredientKeyPath(index: index)
+                            let measureKeyPath = FRMealDetails.getMeasureKeyPath(index: index)
                             
                             if let ingredient = mealDetails[keyPath: ingredientKeyPath],
                                let measure = mealDetails[keyPath: measureKeyPath]
@@ -99,12 +99,13 @@ struct FRMealDetailsView: View
         }
     }
     
+    /// Checks if any ingridents and measurements are available so we can show the appropriate text.
     private func areIngridentsAvailable()
     {
         for index in 1...20
         {
-            let ingredientKeyPath = FRMealDetails.getIngredientKeyPath(index)
-            let measureKeyPath = FRMealDetails.getMeasureKeyPath(index)
+            let ingredientKeyPath = FRMealDetails.getIngredientKeyPath(index: index)
+            let measureKeyPath = FRMealDetails.getMeasureKeyPath(index: index)
             
             if let ingredient = mealDetails[keyPath: ingredientKeyPath],
                let measure = mealDetails[keyPath: measureKeyPath],
