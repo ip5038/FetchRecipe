@@ -22,35 +22,21 @@ class FRMealTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
     func configureCell()
     {
-        let cachedImage = self.mealsViewModel.getImage(mealId: meal.idMeal)
-        if (cachedImage == nil)
+        Task
         {
-            Task
+            do
             {
-                do
-                {
-                    let imgUrl = URL(string: meal.strMealThumb)!
-                    let data = try await FRRecipeService.shared.downloadImage(imgUrl)
-                    if let img = UIImage(data: data)
-                    {
-                        self.mealImageView.image = img
-                        self.mealsViewModel.saveImage(mealId: meal.idMeal, image: img)
-                    }
-                }
-                catch
-                {
-                    print("Error downloading recipe image: \(error.localizedDescription)")
-                }
+                let cachedImage = try await self.mealsViewModel.getImage(imageUrl: meal.strMealThumb, mealId: meal.idMeal)
+                self.mealImageView.image = cachedImage
             }
-        }
-        else
-        {
-            self.mealImageView.image = cachedImage
+            catch
+            {
+                print("Error fetching image: \(error)")
+            }
         }
         
         titleLabel.text = meal.strMeal

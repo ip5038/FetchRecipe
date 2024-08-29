@@ -61,3 +61,104 @@ struct FRMealDetailsResponse: Codable
 {
     let meals: [FRMealDetails]
 }
+
+
+extension FRMealDetails {
+    static func getIngredientKeyPath(_ index: Int) -> KeyPath<FRMealDetails, String?>
+    {
+        switch index
+        {
+        case 1:
+            return \FRMealDetails.strIngredient1
+        case 2:
+            return \FRMealDetails.strIngredient2
+        case 3:
+            return \FRMealDetails.strIngredient3
+        case 4:
+            return \FRMealDetails.strIngredient4
+        case 5:
+            return \FRMealDetails.strIngredient5
+        case 6:
+            return \FRMealDetails.strIngredient6
+        case 7:
+            return \FRMealDetails.strIngredient7
+        case 8:
+            return \FRMealDetails.strIngredient8
+        case 9:
+            return \FRMealDetails.strIngredient9
+        case 10:
+            return \FRMealDetails.strIngredient10
+        case 11:
+            return \FRMealDetails.strIngredient11
+        case 12:
+            return \FRMealDetails.strIngredient12
+        case 13:
+            return \FRMealDetails.strIngredient13
+        case 14:
+            return \FRMealDetails.strIngredient14
+        case 15:
+            return \FRMealDetails.strIngredient15
+        case 16:
+            return \FRMealDetails.strIngredient16
+        case 17:
+            return \FRMealDetails.strIngredient17
+        case 18:
+            return \FRMealDetails.strIngredient18
+        case 19:
+            return \FRMealDetails.strIngredient19
+        case 20:
+            return \FRMealDetails.strIngredient20
+        default:
+            return \FRMealDetails.strIngredient1
+        }
+    }
+    
+    static func getMeasureKeyPath(_ index: Int) -> KeyPath<FRMealDetails, String?>
+    {
+        switch index
+        {
+        case 1:
+            return \FRMealDetails.strMeasure1
+        case 2:
+            return \FRMealDetails.strMeasure2
+        case 3:
+            return \FRMealDetails.strMeasure3
+        case 4:
+            return \FRMealDetails.strMeasure4
+        case 5:
+            return \FRMealDetails.strMeasure5
+        case 6:
+            return \FRMealDetails.strMeasure6
+        case 7:
+            return \FRMealDetails.strMeasure7
+        case 8:
+            return \FRMealDetails.strMeasure8
+        case 9:
+            return \FRMealDetails.strMeasure9
+        case 10:
+            return \FRMealDetails.strMeasure10
+        case 11:
+            return \FRMealDetails.strMeasure11
+        case 12:
+            return \FRMealDetails.strMeasure12
+        case 13:
+            return \FRMealDetails.strMeasure13
+        case 14:
+            return \FRMealDetails.strMeasure14
+        case 15:
+            return \FRMealDetails.strMeasure15
+        case 16:
+            return \FRMealDetails.strMeasure16
+        case 17:
+            return \FRMealDetails.strMeasure17
+        case 18:
+            return \FRMealDetails.strMeasure18
+        case 19:
+            return \FRMealDetails.strMeasure19
+        case 20:
+            return \FRMealDetails.strMeasure20
+        default:
+            return \FRMealDetails.strMeasure1
+        }
+    }
+}

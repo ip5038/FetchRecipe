@@ -34,14 +34,14 @@ extension FRMealsViewController: UITableViewDataSource, UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return  mealsViewModel.desserts.count
+        return mealsViewModel.meals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: kMealTableViewCellIdentifier, for: indexPath) as! FRMealTableViewCell
         
-        cell.meal = mealsViewModel.desserts[indexPath.row]
+        cell.meal = mealsViewModel.meals[indexPath.row]
         cell.mealsViewModel = self.mealsViewModel
         cell.configureCell()
         
@@ -60,7 +60,8 @@ extension FRMealsViewController: UITableViewDataSource, UITableViewDelegate
             do
             {
                 guard let mealDetails = try await mealsViewModel.getMealDetails(indexPath: indexPath) else { return }
-                let detailView = FRMealDetailsView(meal: mealDetails)
+                let mealImage = try await self.mealsViewModel.getImage(imageUrl: mealDetails.strMealThumb, mealId: mealDetails.idMeal)
+                let detailView = FRMealDetailsView(mealDetails: mealDetails, mealImage: mealImage)
                 let hostingController = UIHostingController(rootView: detailView)
                 hostingController.modalPresentationStyle = .fullScreen
                 self.present(hostingController, animated: true)
