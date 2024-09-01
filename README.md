@@ -4,5 +4,5 @@ However, the project is targeted to support iOS 17.0 and up.
 How to run the project:
 1. Download the project or clone the repo
 2. Go to the project folder and open FetchRecipe.xcodeproj
-3. Select your simulator and click the Run button
+3. Select your simulator and click the Run button. Please choose an iPhone simulator as UI has not been fully tested on iPad device.
 4. Once the simulator launches you may have to wait a couple seconds for the recipes to download.
